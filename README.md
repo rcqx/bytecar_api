@@ -1,3 +1,7 @@
+rails g model User name:string
+rails g model Car brand:string model:string image:string
+rails g model Reservation date:date city:string car:belongs_to user:belongs_to
+
 # Hello World Rails => Back-End
 
 This Hello World project implements an API endpoint on Ruby on rails that will be connect to the React fron-end through the two repos aprroach for web development.
