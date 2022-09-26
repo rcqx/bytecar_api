@@ -6,18 +6,18 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
-  :jwt_authenticatable,
-  :registerable,
-  jwt_revocation_strategy: JwtDenylist,
-  authentication_keys: [:login]
- 
+         :jwt_authenticatable,
+         :registerable,
+         jwt_revocation_strategy: JwtDenylist,
+         authentication_keys: [:username]
+
   has_many :reservations, dependent: :destroy
 
-  validates :username, presence: true, length: { in: 2..25 }
+  validates :username, uniqueness: true
 
   attr_writer :login
 
   def login
-    @login || self.username || self.email
+    @login || username || email
   end
 end
