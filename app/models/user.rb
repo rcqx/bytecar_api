@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # devise :database_authenticatable, :registerable,
+  #        :recoverable, :rememberable, :validatable
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
   :jwt_authenticatable,
   :registerable,
@@ -9,11 +13,11 @@ class User < ApplicationRecord
  
   has_many :reservations, dependent: :destroy
 
-  validates :name, presence: true, length: { in: 2..25 }
+  validates :username, presence: true, length: { in: 2..25 }
 
   attr_writer :login
 
   def login
-    @login || self.name || self.email
+    @login || self.username || self.email
   end
 end
