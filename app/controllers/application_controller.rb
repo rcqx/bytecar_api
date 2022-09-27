@@ -1,12 +1,33 @@
 class ApplicationController < ActionController::API
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticated
 
-  protected
+  def encode_token(payload)
+    JWT.encode(payload, 'yourSecret')
+  end
 
-  def configure_permitted_parameters
-    added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
-    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-    devise_parameter_sanitizer.permit :sign_in, keys: [:login, :password]
-    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+  def auth_header
+    request.headers['Authorization']
+  end
+
+  def decoded_token
+    return nil unless auth_header
+
+    token = auth_header.split[1]
+    begin
+      JWT.decode(token, 'yourSecret', true, algorithm: 'HS256')
+    rescue JWT::DecodeError
+      nil
+    end
+  end
+
+  def logged_in_user
+    return nil unless decoded_token
+
+    user_id = decoded_token[0]['user_id']
+    @user = User.find_by(id: user_id)
+  end
+
+  def authenticated
+    render json: { message: 'Please log in' }, status: :unauthorized unless decoded_token
   end
 end
