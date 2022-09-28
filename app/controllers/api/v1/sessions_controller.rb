@@ -5,11 +5,17 @@ class Api::V1::SessionsController < ApplicationController
     @user = User.find_by(username: user_params[:username])
 
     if @user
-      token = encode_token({ user_id: @user.id })
-      render json: { user: @user.username, token: token }, status: :ok
+      log_out
+      token = jwt_encode(@user)
+      render json: { user: @user.username, token: }, status: :ok
     else
       render json: { error: 'Incorrect user' }, status: :not_found
     end
+  end
+
+  def log_out
+    reset_session
+    @current_user = nil
   end
 
   private

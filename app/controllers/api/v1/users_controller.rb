@@ -4,8 +4,8 @@ class Api::V1::UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.valid?
-      token = encode_token({ user_id: @user.id })
-      render json: { user: @user.username, token: token }, status: :ok
+      token = jwt_encode(@user)
+      render json: { user: @user.username, token: }, status: :created
     else
       render json: @user.errors.full_messages, status: 400
     end
@@ -14,6 +14,6 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:username)
+    params.require(:user).permit(:username)
   end
 end
