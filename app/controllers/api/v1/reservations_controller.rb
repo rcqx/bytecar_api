@@ -1,4 +1,5 @@
 class Api::V1::ReservationsController < ApplicationController
+  # before_action :authenticate_user!
   # POST /reservation
   def create
     @reservation = Reservation.new(reservation_params)

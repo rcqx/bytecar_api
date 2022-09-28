@@ -5,8 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-User.create(name: 'Frank')
-User.create(name: 'Jose')
+User.create(id: 1, name: 'Frank', password: '123456', encrypted_attributes: '123456',  created_at: "2022-09-23 00:32:42.134315000 +0000", updated_at: "2022-09-23 00:32:42.134315000 +0000")
+User.create(name: 'Jose', password: '123456')
 User.create(name: 'Hector')
 Car.create(brand: 'Hyundai', model: 'N Vision 74', image:'image_url')
 Car.create(brand: 'Hyundai', model: 'Ioniq 7', image:'image_url')

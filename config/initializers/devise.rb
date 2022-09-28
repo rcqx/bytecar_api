@@ -46,7 +46,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  config.authentication_keys = [:name]
+  config.authentication_keys = [:username]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -58,12 +58,12 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [:name]
+  config.case_insensitive_keys = [:username]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
-  config.strip_whitespace_keys = [:name]
+  config.strip_whitespace_keys = [:username]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -79,7 +79,7 @@ Devise.setup do |config|
   # enable this with :database unless you are using a custom strategy.
   # The supported strategies are:
   # :database      = Support basic authentication with authentication key + password
-  # config.http_authenticatable = false
+  config.http_authenticatable = false
 
   # If 401 status code should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
@@ -308,4 +308,14 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+  config.jwt do |jwt|
+    jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+    jwt.dispatch_requests = [
+      ['POST', %r{^/sign_in$}]
+    ]
+    jwt.revocation_requests = [
+      ['DELETE', %r{^/sign_out$}]
+    ]
+    jwt.expiration_time = 15.day.to_i
+  end
 end
