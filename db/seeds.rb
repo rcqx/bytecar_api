@@ -12,7 +12,7 @@ Car.create(
   purchase_fee: 500,
   tap: 30000,
   duration: 48,
-  description: 'Bright, with illuminated charging port for convenience and style. The electric future looks like the new Chevrolet Bolt EUV. And today it is here')
+  description: 'Bright, with illuminated charging port for convenience and style. The electric future looks like the new Chevrolet Bolt EUV. And today it is here. Second best selling plug-in car in 2017.')
 Car.create(
   brand: 'Tesla', 
   model: 'Model X', 
@@ -30,4 +30,26 @@ Car.create(
   purchase_fee: 1500,
   tap: 55500,
   duration: 48,
-  description: 'The BMW i4 is a mid-size all-electric car manufactured by BMW. It is the first model in the BMW i sub-brand''s second generation of electric vehicles, following the BMW i3.');
+  description: 'The BMW i4 is a mid-size all-electric car manufactured by BMW. It is the first model in the BMW i sub-brand''s second generation of electric vehicles, following the BMW i3.')
+
+# reservations
+Reservation.create(
+  date: '2021-10-01',
+  city: 'New York',
+  car_id: 1,
+  user_id: 1,
+);
+
+Reservation.create(
+  date: '2021-10-02',
+  city: 'New York',
+  car_id: 2,
+  user_id: 1,
+);
+
+Reservation.create(
+  date: '2021-10-03',
+  city: 'New York',
+  car_id: 3,
+  user_id: 1,
+);
