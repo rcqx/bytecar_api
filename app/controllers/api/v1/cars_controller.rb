@@ -1,7 +1,11 @@
 class Api::V1::CarsController < ApplicationController
   # GET /cars
   def index
-    @cars = Car.all
+    # @cars = Car.all.to_json(include: [:image])
+    @cars = []
+    Car.all.each do |car|
+      @cars.push(car.as_json.merge({ image: url_for(car.image) }))
+    end
 
     render json: @cars
   end
@@ -25,6 +29,7 @@ class Api::V1::CarsController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_car
     @car = Car.find(params[:id])
@@ -32,6 +37,6 @@ class Api::V1::CarsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def car_params
-    params.require(:car).permit(:brand, :price, :model, :year, :image)
+    params.permit(:brand, :price, :model, :year, :image)
   end
 end
