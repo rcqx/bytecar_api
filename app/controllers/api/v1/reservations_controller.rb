@@ -1,9 +1,11 @@
 class Api::V1::ReservationsController < ApplicationController
   # before_action :authenticate_user!
+
   # POST /reservation
   def index
     @reservations = Reservation.all
-    render json: @reservations
+
+    render json: @reservations, include: %i[car user]
   end
 
   def create
