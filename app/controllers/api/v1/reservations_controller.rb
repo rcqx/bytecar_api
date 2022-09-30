@@ -5,8 +5,8 @@ class Api::V1::ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
 
-    render json: @reservations, include: [:car, :user]
-    end
+    render json: @reservations, include: %i[car user]
+  end
 
   def create
     @reservation = Reservation.new(reservation_params)
