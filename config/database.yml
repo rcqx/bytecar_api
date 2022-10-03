@@ -17,8 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  username: postgres
+  password: 2726
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: bytecar_api_production
-  username: bytecar_api
-  password: <%= ENV["BYTECAR_API_DATABASE_PASSWORD"] %>
+  username: postgres
+  password: 2726

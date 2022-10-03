@@ -30,6 +30,16 @@ class Api::V1::CarsController < ApplicationController
     end
   end
 
+  # DELETE /api/cars/1
+  def destroy
+    @car = Car.find(params[:id])
+    if @car.destroy
+      render json: { message: 'Car Removed' }, status: :ok
+    else
+      render json: @car.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
