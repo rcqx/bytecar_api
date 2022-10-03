@@ -12,9 +12,11 @@ class Api::V1::CarsController < ApplicationController
 
   # GET /cars/1
   def show
+    @res = []
     @car = Car.find(params[:id])
+    @res.push(@car.as_json.merge({ image: url_for(@car.image) }))
 
-    render json: @car
+    render json: @res
   end
 
   # POST /cars
