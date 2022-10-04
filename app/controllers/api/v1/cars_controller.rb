@@ -1,4 +1,6 @@
 class Api::V1::CarsController < ApplicationController
+  skip_before_action :authenticated
+  
   # GET /cars
   def index
     # @cars = Car.all.to_json(include: [:image])

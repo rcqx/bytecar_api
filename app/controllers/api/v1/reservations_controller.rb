@@ -1,16 +1,12 @@
 class Api::V1::ReservationsController < ApplicationController
-  # before_action :authenticate_user!
-
-  # POST /reservation
   def index
-    @reservations = Reservation.all
-
-    render json: @reservations, include: %i[car user]
+    @reservations = current_user.reservations.includes(:car)
+    render json: @reservations, include: [:car], status: :ok
   end
 
   def create
     @reservation = Reservation.new(reservation_params)
-
+    @reservation.user_id = current_user.id
     if @reservation.save
       render json: @reservation, status: :created
     else
@@ -18,7 +14,6 @@ class Api::V1::ReservationsController < ApplicationController
     end
   end
 
-  # DELETE /players/1
   def destroy
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
@@ -26,8 +21,7 @@ class Api::V1::ReservationsController < ApplicationController
 
   private
 
-  # Only allow a list of trusted parameters through.
   def reservation_params
-    params.permit(:city, :date, :user_id, :car_id)
+    params.require(:reservation).permit(:city, :date, :car_id)
   end
 end
