@@ -15,7 +15,8 @@ class ApplicationController < ActionController::API
 
   def jwt_decoded
     return nil unless token
-    begin  
+
+    begin
       JWT.decode(token.split[1], jwt_key, true, { algorithm: 'HS256' })
     rescue JWT::DecodeError
       nil
