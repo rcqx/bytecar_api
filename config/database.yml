@@ -17,8 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
-  password: 2726
+  # username: postgres
+  # password: 2726
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: bytecar_api_production
-  username: postgres
-  password: 2726
+  username: bytecar
+  # password: 2726
