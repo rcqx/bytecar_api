@@ -1,0 +1,111 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/cars":
+    get:
+      summary: Retrieves Cars
+      tags:
+      - Cars
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Cars retrieved
+    post:
+      summary: Create a Car
+      tags:
+      - Cars
+      parameters: []
+      responses:
+        '201':
+          description: Car created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                brand:
+                  type: string
+                model:
+                  type: string
+                finance_fee:
+                  type: integer
+                purchase_fee:
+                  type: integer
+                tap:
+                  type: integer
+                duration:
+                  type: integer
+                description:
+                  type: text
+                image:
+                  type: blob
+              required:
+              - brand
+              - finance_fee
+              - model
+              - image
+              - tap
+              - duration
+              - description
+          application/xml:
+            schema:
+              type: object
+              properties:
+                brand:
+                  type: string
+                model:
+                  type: string
+                finance_fee:
+                  type: integer
+                purchase_fee:
+                  type: integer
+                tap:
+                  type: integer
+                duration:
+                  type: integer
+                description:
+                  type: text
+                image:
+                  type: blob
+              required:
+              - brand
+              - finance_fee
+              - model
+              - image
+              - tap
+              - duration
+              - description
+  "/api/v1/reservations":
+    get:
+      summary: Retrieves Reservations
+      tags:
+      - Reservations
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Reservations retrieved
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
