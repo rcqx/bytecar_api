@@ -34,7 +34,6 @@ describe 'Cars API' do
       }
 
       response '201', 'Car created' do
-        # let(:user) { { "user":"John","token":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.sgpha5VGkHgndahWpvO_TEYlz02BYhA_BhWDCyawFUQ" }} 
         let(:car) { 
           { 
             brand: 'Tesla', 
@@ -47,6 +46,29 @@ describe 'Cars API' do
           }
         }
         run_test!
+      end
+    end
+
+    path '/api/v1/cars/:id' do
+      delete 'Delete Car' do
+        tags 'Car'
+        consumes 'application/json', 'application/xml'
+        parameter name: :car, in: :body, schema: {
+          type: :object,
+          properties: {
+            id: { type: :integer }
+          },
+          required: ['id']
+        }
+
+        response '201', 'Car deleted' do 
+          let(:car) {
+            {
+              id: 3
+            }
+          }
+          run_test!
+        end
       end
     end
   end

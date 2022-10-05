@@ -87,6 +87,33 @@ paths:
               - tap
               - duration
               - description
+  "/api/v1/cars/:id":
+    delete:
+      summary: Delete Car
+      tags:
+      - Car
+      parameters: []
+      responses:
+        '201':
+          description: Car deleted
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+              required:
+              - id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+              required:
+              - id
   "/api/v1/reservations":
     get:
       summary: Retrieves Reservations
@@ -104,6 +131,78 @@ paths:
       responses:
         '200':
           description: Reservations retrieved
+  "/api/v1/:user_username/reservations":
+    post:
+      summary: Create a Reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '201':
+          description: Reservation created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: date
+                city:
+                  type: string
+                car_id:
+                  type: bigint
+                user_id:
+                  type: bigint
+              required:
+              - date
+              - city
+              - car_id
+              - user_id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: date
+                city:
+                  type: string
+                car_id:
+                  type: bigint
+                user_id:
+                  type: bigint
+              required:
+              - date
+              - city
+              - car_id
+              - user_id
+  "/api/v1/:user_username/reservations/:id":
+    delete:
+      summary: Delete Reservation
+      tags:
+      - Reservation
+      parameters: []
+      responses:
+        '201':
+          description: Reservation deleted
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+              required:
+              - id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+              required:
+              - id
 servers:
 - url: https://{defaultHost}
   variables:

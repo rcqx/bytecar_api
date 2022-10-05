@@ -9,11 +9,62 @@ describe 'Reservations API' do
       parameter name: :per_page, in: :query, type: :integer
 
       response '200', 'Reservations retrieved' do
-        # let(:user) { { "user":"John","token":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.sgpha5VGkHgndahWpvO_TEYlz02BYhA_BhWDCyawFUQ" }} 
         let(:page) { 1 }
         let(:per_page) { 10 }
         run_test!
       end
     end
   end
+
+  path '/api/v1/:user_username/reservations' do
+    post 'Create a Reservation' do
+      tags 'Reservations'
+      consumes 'application/json', 'application/xml'
+      parameter name: :reservation, in: :body, schema: {
+        type: :object,
+        properties: {
+          date: { type: :date },
+          city: { type: :string },
+          car_id: { type: :bigint },
+          user_id: { type: :bigint }
+        },
+        required: ['date', 'city', 'car_id', 'user_id']
+      }
+
+      response '201', 'Reservation created' do
+        let(:reservation) {
+          {  
+            date: '2020-05-06',
+            city: 'London', 
+            car_id: 1,
+            user_id: 3
+          }
+        }
+        run_test!
+      end
+    end
+  end
+
+  path '/api/v1/:user_username/reservations/:id' do
+    delete 'Delete Reservation' do
+      tags 'Reservation'
+      consumes 'application/json', 'application/xml'
+      parameter name: :reservation, in: :body, schema: {
+        type: :object,
+        properties: {
+          id: { type: :integer }
+        },
+        required: ['id']
+      }
+
+      response '201', 'Reservation deleted' do 
+        let(:reservation) {
+          {
+            id: 3
+          }
+        }
+        run_test!
+      end
+    end
+  end 
 end
