@@ -28,18 +28,18 @@ describe 'Reservations API' do
           car_id: { type: :bigint },
           user_id: { type: :bigint }
         },
-        required: ['date', 'city', 'car_id', 'user_id']
+        required: %w[date city car_id user_id]
       }
 
       response '201', 'Reservation created' do
-        let(:reservation) {
-          {  
+        let(:reservation) do
+          {
             date: '2020-05-06',
-            city: 'London', 
+            city: 'London',
             car_id: 1,
             user_id: 3
           }
-        }
+        end
         run_test!
       end
     end
@@ -57,14 +57,14 @@ describe 'Reservations API' do
         required: ['id']
       }
 
-      response '201', 'Reservation deleted' do 
-        let(:reservation) {
+      response '201', 'Reservation deleted' do
+        let(:reservation) do
           {
             id: 3
           }
-        }
+        end
         run_test!
       end
     end
-  end 
+  end
 end

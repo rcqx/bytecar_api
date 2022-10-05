@@ -1,5 +1,5 @@
 require 'swagger_helper'
-
+# rubocop:disable Metrics/BlockLength
 describe 'Cars API' do
   path '/api/v1/cars' do
     get 'Retrieves Cars' do
@@ -28,23 +28,23 @@ describe 'Cars API' do
           tap: { type: :integer },
           duration: { type: :integer },
           description: { type: :text },
-          image: { type: :blob} 
+          image: { type: :blob }
         },
-        required: ['brand', 'finance_fee', 'model', 'image', 'tap', 'duration', 'description']
+        required: %w[brand finance_fee model image tap duration description]
       }
 
       response '201', 'Car created' do
-        let(:car) { 
-          { 
-            brand: 'Tesla', 
+        let(:car) do
+          {
+            brand: 'Tesla',
             finance_fee: 2000,
-            model: 'Plaid', 
+            model: 'Plaid',
             image: 'an image',
-            tap: 40000,
+            tap: 40_000,
             duration: 24,
-            description: 'a rspec test' 
+            description: 'a rspec test'
           }
-        }
+        end
         run_test!
       end
     end
@@ -61,15 +61,16 @@ describe 'Cars API' do
           required: ['id']
         }
 
-        response '201', 'Car deleted' do 
-          let(:car) {
+        response '201', 'Car deleted' do
+          let(:car) do
             {
               id: 3
             }
-          }
+          end
           run_test!
         end
       end
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
