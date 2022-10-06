@@ -170,6 +170,8 @@ paths:
       - User session
       parameters: []
       responses:
+        '201':
+          description: User session created
         '404':
           description: invalid request
       requestBody:

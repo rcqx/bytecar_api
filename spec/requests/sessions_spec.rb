@@ -8,24 +8,24 @@ describe 'Users sessions API' do
       parameter name: :username, in: :body, schema: {
         type: :object,
         properties: {
-            username: { type: :string }
-          },
-          required: %w[username]
-        }
+          username: { type: :string }
+        },
+        required: %w[username]
+      }
 
       response '201', 'User session created' do
         schema type: :object,
-          properties: {
-            username: { type: :string },
-            token: { type: :string }
-          },
-          required: %w[username token]
+               properties: {
+                 username: { type: :string },
+                 token: { type: :string }
+               },
+               required: %w[username token]
         let(:username) do
           {
             username: 'Hector'
           }
-        run_test!
         end
+        run_test!
       end
 
       response '404', 'invalid request' do

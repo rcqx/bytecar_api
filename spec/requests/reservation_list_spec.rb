@@ -1,7 +1,6 @@
 require 'swagger_helper'
 
 describe 'Reservations API' do
-  
   path '/api/v1/reservations' do
     get 'Retrieves Reservations' do
       tags 'Reservations'
@@ -17,7 +16,6 @@ describe 'Reservations API' do
     end
   end
 
-
   path '/api/v1/users/{user_username}/reservations' do
     parameter name: 'user_username', in: :path, type: :string, description: 'user_username'
     post 'Create a Reservation' do
@@ -29,7 +27,7 @@ describe 'Reservations API' do
         properties: {
           date: { type: :date },
           city: { type: :string },
-          car_id: { type: :bigint },
+          car_id: { type: :bigint }
         },
         required: %w[date city car_id]
       }
@@ -48,8 +46,8 @@ describe 'Reservations API' do
   end
 
   path '/api/v1/users/{user_username}/reservations/{id}' do
-    parameter name: 'username', in: :path, type: :string, description: 'username' 
-    parameter name: 'id', in: :path, type: :string, description: 'id' 
+    parameter name: 'username', in: :path, type: :string, description: 'username'
+    parameter name: 'id', in: :path, type: :string, description: 'id'
 
     delete 'Delete Reservation' do
       tags 'Reservation'

@@ -2,7 +2,6 @@
 require 'swagger_helper'
 
 describe 'Cars API' do
-
   path '/api/v1/cars' do
     get 'Retrieves Cars' do
       tags 'Cars'
@@ -53,7 +52,7 @@ describe 'Cars API' do
   end
 
   path '/api/v1/cars/{id}' do
-    parameter name: 'id', in: :path, type: :string, description: 'id' 
+    parameter name: 'id', in: :path, type: :string, description: 'id'
 
     delete 'Delete Car' do
       tags 'Car'
