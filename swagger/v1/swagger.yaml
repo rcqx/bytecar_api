@@ -21,190 +21,64 @@ paths:
       responses:
         '200':
           description: Cars retrieved
+  "/api/v1/sessions":
     post:
-      summary: Create a Car
+      summary: Create a user session
       tags:
-      - Cars
+      - User session
       parameters: []
       responses:
-        '201':
-          description: Car created
+        '404':
+          description: invalid request
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                brand:
+                username:
                   type: string
-                model:
-                  type: string
-                finance_fee:
-                  type: integer
-                purchase_fee:
-                  type: integer
-                tap:
-                  type: integer
-                duration:
-                  type: integer
-                description:
-                  type: text
-                image:
-                  type: blob
               required:
-              - brand
-              - finance_fee
-              - model
-              - image
-              - tap
-              - duration
-              - description
+              - username
           application/xml:
             schema:
               type: object
               properties:
-                brand:
+                username:
                   type: string
-                model:
-                  type: string
-                finance_fee:
-                  type: integer
-                purchase_fee:
-                  type: integer
-                tap:
-                  type: integer
-                duration:
-                  type: integer
-                description:
-                  type: text
-                image:
-                  type: blob
               required:
-              - brand
-              - finance_fee
-              - model
-              - image
-              - tap
-              - duration
-              - description
-  "/api/v1/cars/:id":
-    delete:
-      summary: Delete Car
-      tags:
-      - Car
-      parameters: []
-      responses:
-        '201':
-          description: Car deleted
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-              required:
-              - id
-          application/xml:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-              required:
-              - id
-  "/api/v1/reservations":
-    get:
-      summary: Retrieves Reservations
-      tags:
-      - Reservations
-      parameters:
-      - name: page
-        in: query
-        schema:
-          type: integer
-      - name: per_page
-        in: query
-        schema:
-          type: integer
-      responses:
-        '200':
-          description: Reservations retrieved
-  "/api/v1/:user_username/reservations":
+              - username
+  "/api/v1/users":
     post:
-      summary: Create a Reservation
+      summary: Create a User
       tags:
-      - Reservations
+      - Users
       parameters: []
       responses:
         '201':
-          description: Reservation created
+          description: User created
+        '400':
+          description: Invalid request
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                date:
-                  type: date
-                city:
+                username:
                   type: string
-                car_id:
-                  type: bigint
-                user_id:
-                  type: bigint
               required:
-              - date
-              - city
-              - car_id
-              - user_id
+              - username
           application/xml:
             schema:
               type: object
               properties:
-                date:
-                  type: date
-                city:
+                username:
                   type: string
-                car_id:
-                  type: bigint
-                user_id:
-                  type: bigint
               required:
-              - date
-              - city
-              - car_id
-              - user_id
-  "/api/v1/:user_username/reservations/:id":
-    delete:
-      summary: Delete Reservation
-      tags:
-      - Reservation
-      parameters: []
-      responses:
-        '201':
-          description: Reservation deleted
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-              required:
-              - id
-          application/xml:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-              required:
-              - id
+              - username
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: localhost:3000
