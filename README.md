@@ -1,5 +1,7 @@
 # ByteCar API
 
+![image](https://user-images.githubusercontent.com/58822719/194433219-379f891c-8a17-4f30-8046-746035d01dea.png)
+
 This is the back-end API for ByteCar, an app in which you can test drive a car.
 
 - Sign up and sign in to access the app.
