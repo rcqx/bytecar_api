@@ -8,9 +8,8 @@ Rails.application.routes.draw do
         resources :reservations, only: [:create, :destroy]
       end
       resources :sessions, only: [:create]
-      
-      # TEMPORAL ROUTE FOR MOCKING RESERVATIONS
-      resources :reservations, only: [:index, :destroy]
+      resources :reservations, only: [:index]
     end
   end
 end
+  

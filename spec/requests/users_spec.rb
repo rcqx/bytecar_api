@@ -8,11 +8,11 @@ describe 'Users API' do
       parameter name: :user, in: :body, schema: {
         type: :object,
         properties: {
-          username: { type: :string },
+          username: { type: :string }
         },
         required: %w[username]
       }
-    
+
       response '201', 'User created' do
         let(:user) do
           {
@@ -31,5 +31,5 @@ describe 'Users API' do
         run_test!
       end
     end
-  end   
+  end
 end

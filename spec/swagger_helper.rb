@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 require 'rails_helper'
 
 RSpec.configure do |config|
@@ -20,12 +21,22 @@ RSpec.configure do |config|
         version: 'v1'
       },
       paths: {},
+      components: {
+        securitySchemes: {
+          Bearer: {
+            type: :apiKey,
+            name: 'Authorization',
+            in: :header,
+            description: 'Bearer token'
+          }
+        }
+      },
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: 'http://{defaultHost}',
           variables: {
             defaultHost: {
-              default: 'www.example.com'
+              default: 'localhost:3000'
             }
           }
         }
@@ -39,3 +50,4 @@ RSpec.configure do |config|
   # Defaults to json. Accepts ':json' and ':yaml'.
   config.swagger_format = :yaml
 end
+# rubocop:enable Metrics/BlockLength
