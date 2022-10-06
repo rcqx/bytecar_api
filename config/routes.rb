@@ -4,9 +4,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do 
       resources :cars, only: [:index, :show, :create, :destroy]
-      resources :users, param: :username, only: [:create]
+      resources :users, param: :username, only: [:create] do
+        resources :reservations, only: [:create, :destroy]
+      end
       resources :sessions, only: [:create]
-      resources :reservations, only: [:index, :create, :destroy]
+      resources :reservations, only: [:index]
     end
   end
 end
+  

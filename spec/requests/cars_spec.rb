@@ -59,10 +59,11 @@ describe 'Cars API' do
       tags 'Car'
       consumes 'application/json', 'application/xml'
       security [bearer: []]
+
       response '201', 'Car deleted' do
         let(:car) do
           {
-            id: 3
+            id: 1
           }
         end
         run_test!

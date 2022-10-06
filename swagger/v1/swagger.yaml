@@ -75,6 +75,23 @@ paths:
       responses:
         '201':
           description: Car deleted
+  "/api/v1/reservations":
+    get:
+      summary: Retrieves Reservations
+      tags:
+      - Reservations
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Reservations retrieved
   "/api/v1/users/{user_username}/reservations":
     parameters:
     - name: user_username
@@ -83,15 +100,69 @@ paths:
       required: true
       schema:
         type: string
-    get:
+    post:
       summary: Create a Reservation
       tags:
       - Reservations
       security:
       - Bearer: []
+      parameters: []
       responses:
-        '200':
-          description: Reservation retrieved
+        '201':
+          description: Reservation created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: date
+                city:
+                  type: string
+                car_id:
+                  type: bigint
+              required:
+              - date
+              - city
+              - car_id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: date
+                city:
+                  type: string
+                car_id:
+                  type: bigint
+              required:
+              - date
+              - city
+              - car_id
+  "/api/v1/users/{user_username}/reservations/{id}":
+    parameters:
+    - name: username
+      in: path
+      description: username
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    delete:
+      summary: Delete Reservation
+      tags:
+      - Reservation
+      security:
+      - Bearer: []
+      responses:
+        '201':
+          description: Reservation deleted
   "/api/v1/sessions":
     post:
       summary: Create a user session
