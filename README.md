@@ -1,74 +1,78 @@
-rails g model User name:string
-rails g model Car brand:string model:string image:string
-rails g model Reservation date:date city:string car:belongs_to user:belongs_to
+# ByteCar API
 
-# Hello World Rails => Back-End
+This is the back-end API for ByteCar, an app in which you can test drive a car.
 
-This Hello World project implements an API endpoint on Ruby on rails that will be connect to the React fron-end through the two repos aprroach for web development.
+- Sign up and sign in to access the app.
+- Choose from our list of electric car.
+- Watch a detailed view of each car profile.
+- Reserve a test drive for a car up to one month from any date within the next six months.
+- Manage all your reservations from one page.
+- users can add and delete providers if needed.
 
-### Prerequisites
- - First of all make sure you have `PSQL`, `Ruby` & `Rails` installed in your machine
+The API has endpoints for users / providers / reservations / skills / password recovery.
 
-- You should have ruby installed in your machine, you can follow the steps given by the [official documentation](https://www.ruby-lang.org/en/documentation/installation/)
+Read the complete documentation [here]().
 
-- After you installed Ruby, now you can install `Rails` with this simple command: ```gem install rails```.
+## UI Repo
 
-- You should have a postgres user with superuser permissions. you can refer to the official [postgres documentation](https://www.postgresql.org/docs/current/role-attributes.html#:~:text=To%20create%20a%20new%20database,that%20is%20already%20a%20superuser.&text=A%20role%20must%20be%20explicitly,use%20CREATE%20ROLE%20name%20CREATEDB%20.) to create or update a role.
-
-### Install
-
- - clone the project with the following command line : 
-```
-$ git clone git@github.com:fabianofrank/hello-rails-backend.git
-```
- - Then go to the folder
-```
-$ cd hello-rails-backend
-```
-
-## Getting Started
-
-This repository includes files with Ruby that can be used to test the created main classes from the app
-
-Clone this link into your local device.
-
-To run test make sure that rspec-rails and capybara libraries are installed in your project
-
-To double check please run:
-```
-bundle install
-yarn install
-```
-This will install both gems if they were missing in your environment.
-
-Run the server:
-```
-./bin/dev
-```
-
-or
-
-Build manually and run the server with rails:
-
-```
-yarn build
-```
-
- - Finaly run `rails s` and visit http://localhost:3000 in your browser!
- - If you want to checkout the API endpoints go to: http://localhost:3000/api/greetings
-
+Check the UI of this App [here](https://github.com/jr-cast/bytecar).
 
 ## Built With
 
- - Ruby on RAils  <img src="https://cdn.emojidex.com/emoji/seal/Ruby.png" width=15px>
- - PostgreSQL <img src="https://user-images.githubusercontent.com/80895497/142954032-f7072df9-3586-48f9-a9e0-7fdd284eb833.png" width=15px>
- - React
- - Webpack
-</br>
+- Ruby 3.1.2
+- Ruby on Rails 7.0.3
+- PostgreSQL
 
-## Author
+## Getting Started
 
-👤 **Fabiano Frank**
+To get a local copy up and running follow these simple example steps.
+
+- Click on the top right green "code" button.
+- On the dropdown menu, choose "download with zip" button.
+- After download, extract the zip file and you have the project on your machine.
+- Make sure that your PostgreSQL server is running and you have the ability to establish connection with the database.
+- Execute `rails db:create` to create the database.
+- Execute `rails db:migrate` to migrate the database.
+- Run `rails s` to run the application.
+
+## Tests
+
+- If you want to run some unit tests, all you need to do is:
+- On your terminal execute: `gem install rspec`
+- Run the `rspec` command in this case over the path of `spec/`, the resulting command will look like this: `rspec spec/`.
+- If you want to run the tests over the entire project, you can execute the following command: `rspec`
+
+## Deployment
+
+[Live UI]()
+
+[API Link]()
+
+## Kanban Board
+
+In this project 3 developers have participated, connect with them in the [authors](#authors) section.
+
+Check out the backend(API) kanban board: https://github.com/users/jr-cast/projects/8
+
+This was the kanban board a the beggining of the project
+
+![Start_kanban_board](https://user-images.githubusercontent.com/68971295/194431486-c8364654-3faa-49a7-8ea2-f4b954b8d793.png)
+
+## Authors
+
+### 👤 Jose
+
+- GitHub: [@jr-cast](https://github.com/jr-cast)
+- Twitter: [@josercastanos](https://twitter.com/josercastanos)
+- LinkedIn: [@jr-cast](https://linkedin.com/in/jr-cast)
+
+### 👤 Hector Torres
+
+- GitHub: [@HectorTorres](https://github.com/HectorTorresE)
+- Twitter: [@HectorT](https://twitter.com/HectorT00406915)
+- LinkedIn: [@Hectorjte](https://www.linkedin.com/in/hectorjte/)
+
+### 👤 Fabiano Frank
 
 - GitHub: [@fabianofrank](https://github.com/fabianofrank)
 - Twitter: [@fabianofrankk](https://twitter.com/fabianofrankk)
@@ -77,21 +81,12 @@ yarn build
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](https://github.com/fabianofrank/rails-blog-app/issues).
+Feel free to check the [issues page](../../issues/).
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
 
-## Acknowledgments
-
-- Inspiration 💘
-- Microverse program ⚡
-- My standup team 😍
-- My family's support 🙌
-- MicroBros 😜
-
 ## 📝 License
 
-This project is [MIT](https://github.com/fabianofrank/rails-blog-app/blob/develop/LICENSE.md) licensed.
+This project is [MIT](./LICENSE) licensed.
