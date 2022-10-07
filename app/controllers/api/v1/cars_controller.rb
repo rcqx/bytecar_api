@@ -4,21 +4,16 @@ class Api::V1::CarsController < ApplicationController
   # GET /cars
   def index
     # @cars = Car.all.to_json(include: [:image])
-    @cars = []
-    Car.all.each do |car|
-      @cars.push(car.as_json.merge({ image: url_for(car.image) }))
-    end
+    @cars = Car.all
 
     render json: @cars
   end
 
   # GET /cars/1
   def show
-    @res = []
     @car = Car.find(params[:id])
-    @res.push(@car.as_json.merge({ image: url_for(@car.image) }))
 
-    render json: @res
+    render json: @car
   end
 
   # POST /cars

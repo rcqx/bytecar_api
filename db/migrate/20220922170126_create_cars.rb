@@ -3,6 +3,7 @@ class CreateCars < ActiveRecord::Migration[7.0]
     create_table :cars do |t|
       t.string :brand
       t.string :model
+      t.string :image
 
       t.timestamps
     end
