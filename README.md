@@ -74,11 +74,10 @@ This was the kanban board a the beggining of the project
 - Twitter: [@HectorT](https://twitter.com/HectorT00406915)
 - LinkedIn: [@Hectorjte](https://www.linkedin.com/in/hectorjte/)
 
-### 👤 Fabiano Frank
+### 👤 Fabiano Magalhaes
 
-- GitHub: [@fabianofrank](https://github.com/fabianofrank)
-- Twitter: [@fabianofrankk](https://twitter.com/fabianofrankk)
-- LinkedIn: [@fabianofrank](https://www.linkedin.com/in/fabianofrank/)
+- GitHub: [@fabianomag](https://github.com/fabianomag)
+- LinkedIn: [@fabianomag](https://www.linkedin.com/in/fabianomag/)
 
 ## 🤝 Contributing
 
